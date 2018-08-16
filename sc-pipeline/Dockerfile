@@ -1,4 +1,4 @@
-FROM rocker/tidyverse:3.4
+FROM rocker/tidyverse:3.5
 
 RUN apt-get update -qq && apt-get -y --no-install-recommends install \
       autoconf \
@@ -18,7 +18,10 @@ RUN Rscript -e "library('devtools')" \
       -e "install.packages('BiocManager')" \
       -e "source('http://bioconductor.org/biocLite.R')" \
       -e "biocLite('DropletUtils')" \
-      -e "BiocManager::install('scater')" \
-      -e "install.packages('Seurat')" \
-      -e "install_github('dviraran/SingleR')" \
-      && rm -rf /tmp/downloaded_packages
+      -e "BiocManager::install('scater')"
+
+RUN Rscript -e "library('devtools')" \
+      -e "install_github('dviraran/SingleR')"
+
+RUN Rscript -e "install.packages('Seurat')" \
+     && rm -rf /tmp/downloaded_packages
