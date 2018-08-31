@@ -19,10 +19,11 @@ RUN Rscript -e "library('devtools')" \
       -e "install.packages('BiocManager')" \
       -e "source('http://bioconductor.org/biocLite.R')" \
       -e "biocLite('DropletUtils')" \
+      -e "biocLite('GSEABase')" \
+      -e "biocLite('GSVA')" \
       -e "BiocManager::install('scater')" \
       -e "install.packages('robustbase', repos='http://R-Forge.R-project.org')" \
       -e "install_github('dviraran/SingleR')" \
-      -e "install.packages('Seurat')" \
       && rm -rf /tmp/downloaded_packages
 
 CMD ["/bin/bash"]
