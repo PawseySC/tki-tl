@@ -38,5 +38,6 @@ RUN wget http://sapac.support.illumina.com/content/dam/illumina-support/document
     && rm -f bcl2fastq2-v${BCL_ZIP_VERSION}-linux.zip \
     && rm -rf /tmp/bcl2fastq-build
 
+WORKDIR /
 # Add cell ranger to path
 ENV PATH /opt/cellranger-${CELLRANGER_VERSION}:$PATH
